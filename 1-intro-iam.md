@@ -12,7 +12,7 @@
    - ACL's (Access Control Lists)
    - RBAC (Role Based Access Control)
    - ABAC (Attribute Based Access Control)
-4. Te
+4. 
 
 # IAM Architecture elements/roles
 1. Database (Directory)
@@ -37,7 +37,7 @@ Cognito handles identity management through two main components:
      - Identity pools can be used without User Pools to support anonymous guest users
 ![Amazon Cognito Arch Pattern](./docs/content/imgs/architecture/amazon-cognito-arch-pattern.png)
 
-- [] Read up on SRP protocol (Secure Remote Password)
+> [] Read up on SRP protocol (Secure Remote Password)
 
 # Secure design principles
 
