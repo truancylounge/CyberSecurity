@@ -15,15 +15,41 @@
 4. 
 
 # IAM Architecture elements/roles
-1. Database (Directory)
+1. **Database (Directory)**
    - IAM systems usually keep records of identities in their own data structures. 
    - Relational, Object, Graph databases can be used to store identity data.
    - **Hierarchical databases** are particularly suitable for handling identity storage. The tree data model makes them a good fit to store identity data.
    - Interactions with Hierarchical databases is done using LDAP protocol. 
-   - Examples; Active Directory, OpenLDAP 
-2. te
+   - Examples: **Active Directory, OpenLDAP** 
+2. **Identity Management (IDM)**
+   - IDM can be used to implement complex processes of how to aggregate, verify and merge user accounts from different systems (e.g, HR)
+   - Controls user state such as expired or locked accounts. 
+   - Implement approval processes for accounts and roles. 
+   - Examples: **Midpoint, OpenIDM**
+3. **Access Management (AM)**
+   - Goal of Access Management is to allow the entitled actor to access the requested resource. 
+   - AM systems include interconnected modules such as **Authentication, Authorization Control, Policy Management and Session Management.** 
+4. **Identity Provider (IDP)**
+   - Identity Provider is a trusted party that serves identity data. The data is typically shared in the form of secured assertions (e.g. cryptographically signed)
+   - IDP typically performs authentication (password verification) and consent gathering.
+   - Communication between IDP and its clients is usually implemented using one of identity protocols (SAML, OAuth2, OIDC)
+   - Examples: 
+     - OpenAM, Ping Identity (on-prem)
+     - Okta, Auth0, AzureAD, Google Identity (cloud/IDPaaS)
+5. **Relying Party (RP)**
+   - RP is a party that uses identity data received from an IDP to identify the user and execute internal processes
+   - RP and IDP have a trust relation i.e. RP believes that received data is correct
+   - Example: Any application that uses federation, "Sign with Google"
 
-## Amazon Cognito
+   
+
+
+
+> [!CAUTION]
+> 1. Read up on SRP protocol (Secure Remote Password)
+> 2.
+
+## Amazon Cognito Case Study
    - Provides Authentication, Authorization and User Management
    - It is a Customer Identity and Access Management (CIAM) service. 
    - It acts as an **Identity provider (IDP)** and **Identity broker** to handle **user registration, authentication (login/signup) and authorization** for mobile and web applications. \
@@ -36,9 +62,23 @@ Cognito handles identity management through two main components:
      - Users can obtain temporary AWS credentials to access AWS services, S3, Dynamo etc. 
      - Identity pools can be used without User Pools to support anonymous guest users
 ![Amazon Cognito Arch Pattern](./docs/content/imgs/architecture/amazon-cognito-arch-pattern.png)
-     - 
-> [!CAUTION]
-> Read up on SRP protocol (Secure Remote Password)
+
+## Okta integration with Cognito
+
+This architecture means Okta acts as the "master" login source, but your AWS applications still talk directly to Cognito. Instead of switching from Cognito to Okta, you configure Okta as a trusted login provider (Identity Provider) inside Cognito. Your app authenticates with Okta, and Cognito then creates the local session.
+
+### How the Workflow Functions
+
+1. **User Login:** When users try to log in, they are redirected to Okta to enter their credentials.
+2. **Verification:** Okta authenticates the user and verifies their identity.
+3. **Federation:** Okta passes a security token confirming the user's identity to Cognito.
+4. **Token Minting:** Cognito accepts this trusted Okta token and issues its own Cognito JWT (JSON Web Token) for your app's frontend.
+
+### Why Do This?
+
+* **Centralized Management:** It lets employees or customers use their existing corporate Okta credentials to log into applications built on AWS.
+* **Keeps AWS Integrations Intact:** Your AWS services (like API Gateway or AppSync) rely on Cognito tokens for permissions and access control. By federating, you get Okta's login features without breaking your backend AWS infrastructure.
+
 
 # Secure design principles
 
