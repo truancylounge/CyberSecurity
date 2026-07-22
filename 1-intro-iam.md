@@ -79,7 +79,6 @@ This architecture means Okta acts as the "master" login source, but your AWS app
 * **Centralized Management:** It lets employees or customers use their existing corporate Okta credentials to log into applications built on AWS.
 * **Keeps AWS Integrations Intact:** Your AWS services (like API Gateway or AppSync) rely on Cognito tokens for permissions and access control. By federating, you get Okta's login features without breaking your backend AWS infrastructure.
 
-
 # Secure design principles
 
 
