@@ -1,4 +1,4 @@
-# Fundamentals of Identity and Access Management (IAM)
+# Identity and Access Management (IAM)
 1. Common protocols that handle Token Based Authentication are:
    1. **OAuth 2.0**, is the Authorization framework (what user is allowed to do), but not Authentication framework (proving who user is)
    2. **OpenId Connect (OIDC)**, adds critical identity layer that verifies user identity and confirms who the user is. \
@@ -36,8 +36,9 @@ Cognito handles identity management through two main components:
      - Users can obtain temporary AWS credentials to access AWS services, S3, Dynamo etc. 
      - Identity pools can be used without User Pools to support anonymous guest users
 ![Amazon Cognito Arch Pattern](./docs/content/imgs/architecture/amazon-cognito-arch-pattern.png)
-
-> [] Read up on SRP protocol (Secure Remote Password)
+     - 
+> [!CAUTION]
+> Read up on SRP protocol (Secure Remote Password)
 
 # Secure design principles
 
