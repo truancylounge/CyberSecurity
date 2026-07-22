@@ -41,8 +41,8 @@
    - RP and IDP have a trust relation i.e. RP believes that received data is correct
    - Example: Any application that uses federation, "Sign with Google"
 
-   
-
+## Functional Capabilities of IAM
+![IAM Functional Capabilities](./docs/content/imgs/overview/iam-functional-capabilities.png)   
 
 
 > [!CAUTION]
