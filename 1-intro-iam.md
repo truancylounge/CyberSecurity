@@ -12,7 +12,6 @@
    - ACL's (Access Control Lists)
    - RBAC (Role Based Access Control)
    - ABAC (Attribute Based Access Control)
-4. 
 
 # IAM Architecture elements/roles
 1. **Database (Directory)**
@@ -45,14 +44,26 @@
 ![IAM Functional Capabilities](./docs/content/imgs/overview/iam-functional-capabilities.png)   
 
 
+## Authentication Factors
+1. **Something you know**, most popular digital way to authenticate
+   - This factor is based on human ability to remember and replay secrets.
+   - Examples: **password, PIN, security question**
+2. **Something you have**
+   - Verification is accomplished via cryptographic algorithms (e.g. digital signatures)
+   - Examples: **smart card, security token, certificate**
+3. **Something you are**
+   - People can be identified and authenticated by their biological structure.
+   - These do not achieve perfect match (like crypto keys), Biometrics have certain False Acceptance and Rejection Rates
+   - Biometrics are unique, if leaked cannot be changed, therefore storage raises legal concerns
+   - Examples: **fingerprint scan, face scan, iris scan etc**
+
 > [!CAUTION]
-> 1. Read up on SRP protocol (Secure Remote Password)
-> 2.
+> 1. Read up on **SRP protocol (Secure Remote Password)**
 
 ## Amazon Cognito Case Study
    - Provides Authentication, Authorization and User Management
    - It is a Customer Identity and Access Management (CIAM) service. 
-   - It acts as an **Identity provider (IDP)** and **Identity broker** to handle **user registration, authentication (login/signup) and authorization** for mobile and web applications. \
+   - It acts as an **Identity provider (IDP)** and **Identity broker** to handle **user registration, authentication (login/signup) and authorization** for mobile and web applications.
 
 Cognito handles identity management through two main components:
    - **User Pools** are user directories that provide sign-up and sign-in options for all users.
