@@ -56,6 +56,49 @@
    - These do not achieve perfect match (like crypto keys), Biometrics have certain False Acceptance and Rejection Rates
    - Biometrics are unique, if leaked cannot be changed, therefore storage raises legal concerns
    - Examples: **fingerprint scan, face scan, iris scan etc**
+4. Common ways to verify person's identity:
+   - **Knowledge based authentication (KBA)**, in form of security questions
+   - **Single factor authentication**, in form of simple password check
+   - **Multifactor authentication (MFA)**
+   - **Re-authentication**, revalidate the identity of the user on sensitive action i.e. money transfer, password updates etc
+   - **Step-up Authentication**, higher trust is required for sensitive action i.e. password is enough to login but SMS OTP is needed for bank transfers
+   - <ins>**Continuous Authentication**</ins>
+     - Checks user's identity during whole session instead of only checking at login
+     - A continuous authentication system constantly streams authentication data and calculates an identity verification score.
+     - Uses behavioral biometrics, device data and context signals to monitor the user passively, and if behavior changes or is unsafe the system can block access or ask for Step-up Authentication
+     - How it works?
+       - Initial Login, The user logs in with standard credentials like password or fingerprint
+       - Passive Monitoring, Sensors collect data in background without disturbing the user
+       - Risk Scoring, A risk engine compares live actions to user's normal profile and updates trust score
+       - Adaptive Response, if the score drops due to strange activity, the system limits access or triggers extra security checks
+     - Key Signals Monitored:
+       - **Behavioral Biometrics**, Keyboard typing speed, face recording
+       - **Contextual Data**, Current Geo location, network IP address, Wi-Fi or mobile connections
+       - **Device Characteristics**, Device health, browser activity
+     - Benefits and Uses:
+       - **Stops session Hijacking**, prevents attackers from taking over an active session if a user steps away from an unlocked computer
+       - **Zero Trust Support**, fits tightly into modern Zero Trust security models where trust is never assumed permanently
+       - **Better user experience**, reduces the need for disruptive, repeated password prompts by working quietly in background
+     - Context based and risk based authentication, similar to Continuous Authentication but differs in timing and scope
+       - Operates strictly at specific moment of a login or access request
+       - Calculates risk score based on environment variables before granting entry
+       - Signals, static or point in time context like geo location, IP reputation, device fingerprint, time of day etc
+
+## Access management
+1. **Role Based Access Control (RBAC)**
+    - Access to resources is based on roles to which users are assigned. Very similar to AWS IAM roles and policies
+    - Key adv of RBAC is ease of administration, edits or changes to a role can update permissions to thousands of users.
+    - Highly customizable with Deny, Conditions etc. on resources
+2. **Attribute Based Access Control (ABAC)**
+    - RBAC model focuses on roles, it's a special case of ABAC model which only uses attributes of a role.
+    - ABAC avoids the need for capabilities (operation/object pairs) to be directly assigned to subject requesters or to their roles or groups before the request is made.
+    - How this works? Subject requests access, the ABAC engine can make an access control decision based on assigned attributes of the requester, the assigned attributes of the object, env conditions and set of policies that are specified in terms of those attributes and conditions.
+3. **ReBAC (Relationship based Access Control)** & **Artificial Intelligence Supported Access Control (AIAC)**
+    - ReBAC model leverages the relationship between the access requester and other identities who can potentially be affected by access control decision.
+    - ReBAC relies on availability of large, distinct data sets (incorporated data from HR & Access/entitlement/behavior)
+    - Processing large data sets and making rapid decisions is a perfect application for AI, hence latest advancements in access mgmt involve AIAC.
+
+![Access Mgmt Architecture](./docs/content/imgs/architecture/access-management-arch.png)
 
 > [!CAUTION]
 > 1. Read up on **SRP protocol (Secure Remote Password)**
