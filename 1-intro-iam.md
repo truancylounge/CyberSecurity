@@ -62,7 +62,7 @@
    - **Multifactor authentication (MFA)**
    - **Re-authentication**, revalidate the identity of the user on sensitive action i.e. money transfer, password updates etc
    - **Step-up Authentication**, higher trust is required for sensitive action i.e. password is enough to login but SMS OTP is needed for bank transfers
-   - <ins>**Continuous Authentication**</ins>
+   - **Continuous Authentication (Advanced Technique)**
      - Checks user's identity during whole session instead of only checking at login
      - A continuous authentication system constantly streams authentication data and calculates an identity verification score.
      - Uses behavioral biometrics, device data and context signals to monitor the user passively, and if behavior changes or is unsafe the system can block access or ask for Step-up Authentication
@@ -79,10 +79,10 @@
        - **Stops session Hijacking**, prevents attackers from taking over an active session if a user steps away from an unlocked computer
        - **Zero Trust Support**, fits tightly into modern Zero Trust security models where trust is never assumed permanently
        - **Better user experience**, reduces the need for disruptive, repeated password prompts by working quietly in background
-     - Context based and risk based authentication, similar to Continuous Authentication but differs in timing and scope
-       - Operates strictly at specific moment of a login or access request
-       - Calculates risk score based on environment variables before granting entry
-       - Signals, static or point in time context like geo location, IP reputation, device fingerprint, time of day etc
+   - **Context based and risk based authentication**, similar to Continuous Authentication but differs in timing and scope
+     - Operates strictly at specific moment of a login or access request
+     - Calculates risk score based on environment variables before granting entry
+     - Signals, static or point in time context like geo location, IP reputation, device fingerprint, time of day etc
 
 ## Access management
 1. **Role Based Access Control (RBAC)**
@@ -102,6 +102,15 @@
 
 > [!CAUTION]
 > 1. Read up on **SRP protocol (Secure Remote Password)**
+
+## Advanced Customer Identity and Access management (CIAM) Architecture
+The center of system is Identity Provider (IDP) which provides authentication functionality for various clients \
+It also serves externally facing applications via federation protocols \
+Behind IDP, databases, monitoring and IDM (Identity Management) elements are present \
+The architecture also has CRM (Customer Relationship Management) system, which is used to manage access. \
+IDM with IGA (Identity Governance & Administration) plays the role of single source of truth that aggregates data (via connectors) and allows centralised administration.
+
+![High Level CIAM Architecture](./docs/content/imgs/architecture/ciam-arch.png)
 
 ## Amazon Cognito Case Study
    - Provides Authentication, Authorization and User Management
