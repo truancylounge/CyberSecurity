@@ -104,11 +104,11 @@
 > 1. Read up on **SRP protocol (Secure Remote Password)**
 
 ## Advanced Customer Identity and Access management (CIAM) Architecture
-The center of system is Identity Provider (IDP) which provides authentication functionality for various clients \
-It also serves externally facing applications via federation protocols \
-Behind IDP, databases, monitoring and IDM (Identity Management) elements are present \
-The architecture also has CRM (Customer Relationship Management) system, which is used to manage access. \
-IDM with IGA (Identity Governance & Administration) plays the role of single source of truth that aggregates data (via connectors) and allows centralised administration.
+- The center of system is Identity Provider (IDP) which provides authentication functionality for various clients 
+- It also serves externally facing applications via federation protocols 
+- Behind IDP, databases, monitoring and IDM (Identity Management) elements are present 
+- The architecture also has CRM (Customer Relationship Management) system, which is used to manage access. 
+- IDM with IGA (Identity Governance & Administration) plays the role of single source of truth that aggregates data (via connectors) and allows centralised administration.
 
 ![High Level CIAM Architecture](./docs/content/imgs/architecture/ciam-arch.png)
 
